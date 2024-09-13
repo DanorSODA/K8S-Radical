@@ -1,0 +1,90 @@
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Poetry virtual environments
+# If you use Poetry to manage your virtual environment outside of the project directory
+# Uncomment the following line if Poetry creates the virtualenv in the project directory
+# .venv/
+
+# Dependency and packaging files
+poetry.lock
+.Python
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyd
+*.pyo
+*.pyd
+
+# Docker files and temporary files
+*.log
+docker-compose.override.yml
+docker-compose.override.yml.example
+Dockerfile.*
+
+# Sensitive environment variable files
+.env
+.env.*
+
+# Configuration files
+config/
+radicale.conf
+
+# Kubernetes and deployment files
+*.kube
+.kube/
+*.crt
+*.key
+
+# Editor and IDE specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# macOS Finder directory attributes
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+
+# Compiled dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*~
+*.tmp
+*.old
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# System files
+*.DS_Store
+
+# Docker ignore for local development
+docker-compose.yml
+.dockerignore
+
+# Radicale data (if mounted externally)
+data/
+
+# Ignore secrets and sensitive files
+secrets/
