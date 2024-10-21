@@ -1,0 +1,17 @@
+# This file defines the Kubernetes Service for Radicale.
+# The Service exposes Radicale to other pods within the cluster via a ClusterIP.
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: radicale-service    # Name of the Service
+  labels:
+    app: radicale           # Labels for identifying this service
+spec:
+  selector:
+    app: radicale           # Selects pods with the label app=radicale
+  ports:
+    - protocol: TCP
+      port: 80              # The port exposed within the cluster
+      targetPort: 5232      # The internal port Radicale listens on
+  type: ClusterIP           # Exposes the Service only within the cluster

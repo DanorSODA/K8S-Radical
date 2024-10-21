@@ -1,0 +1,31 @@
+# This file defines the Kubernetes Deployment for Radicale, a scalable calendar application.
+# It describes how Radicale should be deployed, including its container image, ports, and volume mounts.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radicale-deployment   # The name of the deployment
+  labels:
+    app: radicale             # Labels to group and identify this app
+spec:
+  replicas: 1                 # Number of Radicale pods to run
+  selector:
+    matchLabels:
+      app: radicale            # Selects pods that match this label
+  template:
+    metadata:
+      labels:
+        app: radicale          # Label applied to all pods created by this deployment
+    spec:
+      containers:
+      - name: radicale         # The name of the container
+        image: danors/radicale:latest  # Docker image for Radicale
+        ports:
+        - containerPort: 5232  # Port Radicale listens to inside the container
+        volumeMounts:
+        - name: radicale-storage
+          mountPath: /var/lib/radicale  # Directory for persistent Radicale data
+      volumes:
+      - name: radicale-storage
+        persistentVolumeClaim:
+          claimName: radicale-pvc  # Use the PVC for persistent data storage

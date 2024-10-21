@@ -1,0 +1,13 @@
+# This file defines a PersistentVolumeClaim (PVC) for Radicale.
+# The PVC ensures that Radicale's data is stored persistently across pod restarts.
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: radicale-pvc         # Name of the PVC
+spec:
+  accessModes:
+    - ReadWriteOnce          # The volume can be mounted as read-write by a single node
+  resources:
+    requests:
+      storage: 1Gi           # Request 1Gi of storage for the Radicale data

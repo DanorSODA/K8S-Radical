@@ -1,0 +1,21 @@
+# This file defines an Ingress resource for exposing Radicale externally via HTTP.
+# It uses the NGINX Ingress controller to route external traffic to the Radicale service.
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: radicale-ingress     # Name of the Ingress resource
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /  # Rewrite the path to the root
+spec:
+  rules:
+  - host: radicale.local     # Hostname to access the Radicale service
+    http:
+      paths:
+      - path: /              # The path for accessing Radicale
+        pathType: Prefix
+        backend:
+          service:
+            name: radicale-service  # Routes traffic to this Service
+            port:
+              number: 80            # The port exposed by the Service
