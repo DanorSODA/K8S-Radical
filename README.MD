@@ -1,6 +1,6 @@
 # Radicale K3s Deployment
 
-This project deploys Radicale, a scalable calendar application, using Docker and Kubernetes (K3s). The deployment is designed to provide persistent storage and service exposure within a Kubernetes cluster.
+This project deploys Radicale, a scalable calendar application, using Docker and Kubernetes (K3s). The deployment is designed to provide persistent storage, service exposure within a Kubernetes cluster, and redundancy with multiple Radicale replicas.
 
 ## Prerequisites
 
@@ -8,39 +8,40 @@ This project deploys Radicale, a scalable calendar application, using Docker and
 - K3s (or any Kubernetes cluster)
 - `kubectl` command-line tool
 
-## Build and Push Docker Image
+## Docker Image for Deployment
 
-1. Build the Docker image for Radicale:
-   ```bash
-   docker build -t <your-dockerhub-username>/radicale:latest .
-
-2.  Push the image to Docker Hub:
-    ```bash
-    docker push <your-dockerhub-username>/radicale:latest
+This deployment uses the pre-built Radicale Docker image available on Docker Hub (`danors/radicale:latest`). No local build is necessary for standard use.
 
 ## Deployment
 
 1. Clone this repository and navigate to the directory.
-    ```bash
-    git clone https://github.com/DanorSODA/K8S-Radical
-    cd K8S-Radical
-    ```
 
-2. Apply the Kubernetes resources in the following order:
-    ```bash
-    kubectl apply -f deployment/pvc.yaml
-    ```
+   ```bash
+   git clone https://github.com/DanorSODA/K8S-Radical
+   cd K8S-Radical
+   ```
 
-    ```bash
-    kubectl apply -f deployment/deployment.yaml
-    ```
-    ```bash
-    kubectl apply -f deployment/service.yaml
-    ```
+2. Follow the installation instructions in [INSTALL.md](INSTALL.md) to deploy Radicale to your Kubernetes cluster. The install script automates namespace creation, resource deployment, and host configuration for easier access.
 
-    ```bash
-    kubectl apply -f deployment/ingress.yaml
-    ```
+## Project Structure
+
+- **Root Directory**:
+
+  - `Dockerfile`: Docker build file for Radicale (for development or custom builds).
+  - `.gitignore`: Specifies files and directories to ignore in Git.
+  - `CONTRIBUTING.md`: Guidelines for contributing to this project.
+  - `INSTALL.md`: Instructions for deploying Radicale using the install script.
+  - `install.sh`: Install script to automate Kubernetes resource application and host configuration.
+  - `README.md`: Main documentation file for the project.
+  - `TASKS.md`: Additional task details and project management information.
+
+- **deployment/** (Kubernetes Resource Files):
+  - `deployment/pvc.yaml`: Defines persistent storage for Radicale.
+  - `deployment/deployment.yaml`: Deploys Radicale with three replicas for high availability.
+  - `deployment/service.yaml`: Exposes Radicale within the Kubernetes cluster.
+  - `deployment/ingress.yaml`: Configures external access via Ingress.
+
+## Additional Information
 
 - [Contributing Guide](CONTRIBUTING.md)
 - [Task file](TASKS.md)

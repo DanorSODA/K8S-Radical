@@ -4,18 +4,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: radicale-ingress     # Name of the Ingress resource
+  name: radicale-ingress # Name of the Ingress resource
+  namespace: radicale # Namespace
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /  # Rewrite the path to the root
+    nginx.ingress.kubernetes.io/rewrite-target: / # Rewrite the path to the root
 spec:
   rules:
-  - host: radicale.local     # Hostname to access the Radicale service
-    http:
-      paths:
-      - path: /              # The path for accessing Radicale
-        pathType: Prefix
-        backend:
-          service:
-            name: radicale-service  # Routes traffic to this Service
-            port:
-              number: 80            # The port exposed by the Service
+    - host: radicale.local # Hostname to access the Radicale service
+      http:
+        paths:
+          - path: / # The path for accessing Radicale
+            pathType: Prefix
+            backend:
+              service:
+                name: radicale-service # Routes traffic to this Service
+                port:
+                  number: 80 # The port exposed by the Service
