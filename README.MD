@@ -37,7 +37,7 @@ This deployment uses the pre-built Radicale Docker image available on Docker Hub
 
 - **deployment/** (Kubernetes Resource Files):
   - `deployment/pvc.yaml`: Defines persistent storage for Radicale.
-  - `deployment/deployment.yaml`: Deploys Radicale with three replicas for high availability.
+  - `deployment/deployment.yaml`: Deploys Radicale with two replicas for high availability.
   - `deployment/service.yaml`: Exposes Radicale within the Kubernetes cluster.
   - `deployment/ingress.yaml`: Configures external access via Ingress.
 
