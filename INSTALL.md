@@ -24,11 +24,10 @@ cd K8S-Radical
 
 The install.sh script will create a dedicated namespace, apply each required Kubernetes resource, and add radicale.local to your /etc/hosts file for easy access.
 
-````sh
+```sh
  ./install.sh
  ```
 
 3. **Access Radicale**:
 
 Once deployment is complete, you can access the Radicale application by navigating to http://radicale.local in your web browser (assuming Ingress is set up correctly in your cluster).
-````
